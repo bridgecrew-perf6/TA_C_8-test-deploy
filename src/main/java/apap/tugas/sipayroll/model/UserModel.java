@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="user")
+@Table(name="userModel")
 public class UserModel implements Serializable {
     @Id
     @GeneratedValue(generator = "system-uuid")
