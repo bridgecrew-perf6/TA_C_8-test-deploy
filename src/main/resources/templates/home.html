@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Home </title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <style>
+        .card{
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.19);
+        }
+
+    </style>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(dynamic='Home')" ></nav>
+<div class="row justify-content-center my-2 mt-5">
+    <h2>Menu Utama SI-PAYROLL</h2>
+</div>
+
+    <div class="row justify-content-center my-2">
+    <div class="card mx-2 my-2" style="width: 18rem;">
+        <img class="card-img-top" th:src="@{/image/gaji.jpg}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Gaji Menu</h5>
+            <p class="card-text">Menu untuk melihat daftar gaji dan melakukan CRUD gaji </p>
+            <a th:href="@{/gaji}" class="btn btn-primary">Browse>></a>
+        </div>
+    </div>
+    <div class="card mx-2 my-2" style="width: 18rem;">
+        <img class="card-img-top" th:src="@{/image/bonus.jpg}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Bonus Menu</h5>
+            <p class="card-text">Menu untuk melakukan pembuatan bonus</p>
+            <a th:href="@{/bonus/add}" class="btn btn-primary">Browse>></a>
+        </div>
+    </div>
+    <div class="card mx-2 my-2" style="width: 18rem;">
+        <img class="card-img-top" th:src="@{/image/lembur.jpg}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Lembur Menu</h5>
+            <p class="card-text">Menu untuk melihat daftar lembur dan melakukan CRUD lembur</p>
+            <a th:href="@{/lembur}" class="btn btn-primary">Browse>></a>
+        </div>
+    </div>
+
+</div>
+
+<div class="row justify-content-center my-2 mt-5">
+    <h2>Menu Lainnya</h2>
+</div>
+
+<div class="row justify-content-center my-2">
+    <div class="card mx-2 my-2" style="width: 18rem;">
+        <img class="card-img-top" th:src="@{/image/lowongan.jpg}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Tambah Lowongan</h5>
+            <p class="card-text">Menu untuk melakukan request lowongan kepada SI-Rekrutment </p>
+            <a role="button" class="btn btn-primary" th:href="@{/lowongan/tambah}">Browse>></a>
+        </div>
+    </div>
+    <br><br>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Add Bonus</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(dynamic='Form Add Bonus')" ></nav>
+<div class="container mt-5">
+    <div class="card-header" style="text-align: center;">
+        <h3><b>Tambah Bonus</b></h3>
+    </div>
+
+    <div class="card-body">
+        <div class="card-text">
+            <form th:action="@{/bonus/add}" th:object="${bonus}" method = "POST">
+
+                <div class="form-group">
+                    <label>UUID User</label>
+                    <div>
+                        <select name="uuid" class="form-control">
+                            <option selected value=""> -- Pilih UUID User -- </option>
+                            <option th:each="uuid : ${listUUIDuser}" th:value="${uuid.id}" th:text="${uuid.id}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Jenis Bonus</label>
+                    <select name="jenisBonus" class="form-control">
+                        <option selected value=""> -- Pilih Jenis Bonus -- </option>
+                        <option th:each="jenis : ${listJenisBonus}" th:value="${jenis.id}" th:text="${jenis.nama}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Tanggal Bonus</label>
+                    <input type="date" class="form-control" name="tanggalDiberikan"/>
+                </div>
+
+                <br><br>
+                <button type="submit" class="btn btn-primary mr-auto">Submit</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

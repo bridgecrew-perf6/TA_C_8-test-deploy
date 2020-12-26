@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hapus Gaji</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<style>
+    .card-header{
+        background-color:#15474a;
+        text-align:center;
+    }
+    h4{
+        color:white;
+    }
+    .card{
+        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.19);
+    }
+</style>
+
+<body>
+    <nav th:replace="fragments/fragment :: navbar(dynamic='Delete Gaji')"></nav>
+
+    <div class="container mt-5" style="width:50%;padding-bottom:20px">
+        <div class="card">
+            <div class="card-header">
+                <h4><b>Hapus Gaji</b></h4>
+            </div>
+
+            <div class="card-body">
+                <div class="card-text" style="padding-top:15px">
+                    <p style="color:forestgreen;text-align: center" th:text="'Gaji dengan ID ' + ${gaji.id} + ' berhasil dihapus.'"></p>
+                    <br>
+                    <a role="button" class="btn btn-primary" th:href="@{/gaji}">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

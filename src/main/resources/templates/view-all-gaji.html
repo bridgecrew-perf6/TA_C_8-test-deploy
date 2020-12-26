@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Gaji</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<style>
+    .card-header{
+        background-color:#15474a;
+        text-align:center;
+    }
+    h4{
+        color:white;
+    }
+    .card{
+        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.19);
+    }
+</style>
+
+<body>
+    <nav th:replace="fragments/fragment :: navbar(dynamic='View All Gaji')"></nav>
+    <div class="container mt-5" style="padding-bottom:20px">
+        <a class="btn btn-primary my-3" th:href="@{/gaji/tambah}">+ Tambah Gaji</a>
+        <div class="card" style="text-align: center;">
+            <div class="card-header">
+                <h4><b>Daftar Gaji</b></h4>
+            </div>
+
+            <div class="card-body">
+                <div class="card-text" style="padding-top:15px">
+
+                    <div th:if="${msg == 'tidak ada gaji'}">
+                        <p th:text="${message}"></p>
+                    </div>
+
+                    <div th:if="${msg == 'ada gaji'}">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Pegawai</th>
+                                    <th>Gaji</th>
+                                    <th>Total Pendapatan Bulan Ini</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr th:each="gaji, iterationStatus : ${listGaji}">
+                                    <td th:text="${iterationStatus.count}"></td>
+                                    <td th:text="${gaji.userGaji.username}"></td>
+                                    <td th:text="${gaji.gajiPokok}"></td>
+                                    <td th:text="${listTotalPendapatan[iterationStatus.index]}"></td>
+                                    <td>
+                                        <a role="button" class="btn btn-primary" th:href="@{/gaji/}+${gaji.id}">Lihat</a>
+                                        <a role="button" class="btn btn-info" th:href="@{/gaji/ubah-status/}+${gaji.id}">Ubah Status</a>
+                                        <a role="button" class="btn btn-dark" th:href="@{/gaji/ubah/}+${gaji.id}">Ubah</a>
+                                        <a role="button" class="btn btn-danger" th:href="@{/gaji/hapus/}+${gaji.id}">Hapus</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

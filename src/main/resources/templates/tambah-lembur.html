@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Lembur</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar(dynamic='Add Lembur')"></nav>
+
+<div class="container mt-5">
+    <div class="card-header" style="text-align: center;">
+        <h3><b>Tambah Lembur</b></h3>
+    </div>
+
+    <div class="card-body">
+        <div class="card-text">
+
+            <div th:if="${msgStatus == 'Gagal'}">
+                <p style="color: red" th:text="${msg}"></p>
+            </div>
+
+            <div th:if="${msgStatus == 'Berhasil'}">
+                <p th:text="${msg}"></p>
+            </div>
+
+            <form th:action="@{/lembur/tambah}" th:object="${newLembur}" method="POST">
+                <input type="hidden" th:field="*{id}"/>
+                <input type="hidden" th:field="*{statusPersetujuan}"/>
+
+                <div class="form-group">
+                    <label>Waktu Mulai</label>
+                    <input type="datetime-local" class="form-control" th:field="*{waktuMulai}"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Waktu Selesai</label>
+                    <input type="datetime-local" class="form-control" th:field="*{waktuSelesai}"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Kompensasi per Jam</label>
+                    <input type="text" disabled class="form-control" placeholder="Rp120.000">
+                </div>
+
+
+                <br><br>
+                <button type="submit" class="btn btn-primary mr-auto">Submit</button>
+
+            </form>
+
+            <br>
+            <a role="button" class="btn btn-outline-primary mr-auto" th:href="@{/}">Cancel</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

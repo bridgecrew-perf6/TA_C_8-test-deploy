@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail gaji</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <style>
+        .container{
+            width:50%;
+        }
+        .card-header{
+            background-color:#15474a;
+            text-align:center;
+        }
+        h4{
+            color:white;
+            padding-top:8px;
+        }
+        h6{
+            line-height: 2.0;
+        }
+        .card{
+            box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.19);
+        }
+
+    </style>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar(dynamic='View All Gaji')"></nav>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header" >
+            <h4>Informasi Detail Gaji</h4>
+        </div>
+
+        <div class="card-body">
+                <div class="row justify-content-center" style="margin-top:25px">
+                    <div class="col-3">
+                        <h6 th:text="'UUID'"></h6>
+                    </div>
+                    <div class="col-lg-7">
+                        <h6 th:text="' : ' + ${gaji.userGaji.id}"></h6>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-3">
+                        <h6 th:text="'Nama Pegawai'"></h6>
+                    </div>
+                    <div class="col-lg-7">
+                        <h6 th:text="' : ' + ${gaji.userGaji.username}"></h6>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-3">
+                        <h6 th:text="'Gaji'"></h6>
+                    </div>
+                    <div class="col-lg-7">
+                        <h6 th:text="' : ' + ${gaji.gajiPokok}"></h6>
+                    </div>
+                </div>
+            <div class="row justify-content-center">
+                <div class="col-3">
+                    <h6 th:text="'Total Bonus'"></h6>
+                </div>
+                <div class="col-lg-7">
+                    <h6 th:text="' : ' + ${totalBonus}"></h6>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-3">
+                    <h6 th:text="'Total Lembur'"></h6>
+                </div>
+                <div class="col-lg-7">
+                    <h6 th:text="' : ' + ${totalLembur}"></h6>
+                </div>
+            </div>
+                <div class="row justify-content-center">
+                    <div class="col-3">
+                        <h6 th:text="'Nama Pengaju'"></h6>
+                    </div>
+                    <div class="col-lg-7">
+                        <h6 th:text="' : ' + ${gaji.pengaju.username}"></h6>
+                    </div>
+                </div>
+                <div class="row justify-content-center" style="margin-bottom:25px">
+                    <div class="col-3">
+                        <h6 th:text="'Nama Penyetuju'"></h6>
+                    </div>
+                    <div class="col-lg-7">
+                        <h6 th:text="' : ' + ${penyetuju}"></h6>
+                    </div>
+                </div>
+            <a class="btn btn-primary mx-5 mb-3" th:href="@{/gaji}">Kembali</a>
+            </div>
+
+    </div>
+</div>
+
+</body>
+</html>

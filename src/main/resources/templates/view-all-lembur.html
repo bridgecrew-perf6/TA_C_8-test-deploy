@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Lembur</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar(dynamic='View All Gaji')"></nav>
+<div class="container mt-5">
+    <a role="button" class="btn btn-primary my-3" th:href="@{/lembur/tambah}">+ Tambah Lembur</a>
+    <div style="text-align: center;">
+        <div class="card-header">
+            <h2><b>Daftar Lembur</b></h2>
+        </div>
+
+        <div class="card-body">
+            <div class="card-text">
+
+                <div th:if="${msg == 'tidak ada lembur'}">
+                    <p th:text="${message}"></p>
+                </div>
+
+                <div th:if="${msg == 'ada lembur'}">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Pegawai</th>
+                            <th>Waktu Mulai</th>
+                            <th>Waktu Selesai</th>
+                            <th>Kompensasi</th>
+                            <th>Status Persetujuan</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr th:each="lembur, iterationStatus : ${listLembur}">
+                            <td th:text="${iterationStatus.count}"></td>
+                            <td th:text="${lembur.gaji.userGaji.username}"></td>
+                            <td th:text="${lembur.waktuMulai}"></td>
+                            <td th:text="${lembur.waktuSelesai}"></td>
+                            <td th:text="${listKompensasi[iterationStatus.index]}"></td>
+                            <td th:text="${lembur.statusPersetujuan}"></td>
+                            <td>
+                                <a role="button" class="btn btn-dark" th:href="@{/lembur/change/}+${lembur.id}">Ubah</a>
+                                <a role="button" class="btn btn-danger" th:href="@{/lembur/delete/}+${lembur.id}">Hapus</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

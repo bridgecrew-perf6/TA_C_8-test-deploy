@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Add Bonus</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(dynamic='Add Bonus')" ></nav>
+<div th:if="${msgStatus == 'THR dan Bonus Tahunan, hanya dapat diterima satu kali dalam satu tahun'}">
+    <h2 style="color: red">Gagal menambahkan bonus</h2>
+    <p style="color: red" th:text="${msgStatus}"></p>
+</div>
+<div th:if="${msgStatus == 'Bonus berhasil ditambahkan'}">
+    <h2 style="color: black" th:text="${msgStatus}"></h2>
+</div>
+<a href="/bonus/add">Kembali</a>
+</body>
+</html>

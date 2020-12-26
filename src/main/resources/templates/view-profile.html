@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar(dynamic='Profile')"></nav>
+
+<div class="container-fluid">
+    <h1>User Profile</h1>
+    <div class="card" >
+        <table class="table">
+            <tr>
+                <td>Username</td>
+                <td th:text="${user.username}"></td>
+            </tr>
+            <tr>
+                <td>Role</td>
+                <td th:text="${user.role.nama}"></td>
+            </tr>
+            <div th:if="${profile != null}">
+                <tr>
+                    <td>ID Pegawai</td>
+                    <td th:text="${profile.get('result').get('idPegawai')}"></td>
+                </tr>
+                <tr>
+                    <td>Nama</td>
+                    <td th:text="${profile.get('result').get('nama')}"></td>
+                </tr>
+                <tr>
+                    <td>Telepon</td>
+                    <td th:text="${profile.get('result').get('noTelepon')}"></td>
+                </tr>
+                <tr>
+                    <td>Tempat Lahir</td>
+                    <td th:text="${profile.get('result').get('tempatLahir')}"></td>
+                </tr>
+                <tr>
+                    <td>Tanggal Lahir</td>
+                    <td th:text="${profile.get('result').get('tanggalLahir')}"></td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td th:text="${profile.get('result').get('alamat')}"></td>
+                </tr>
+            </div>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

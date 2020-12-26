@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Ubah Status Gaji</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<style>
+    .card-header{
+        background-color:#15474a;
+        text-align:center;
+    }
+    h4{
+        color:white;
+    }
+    .card{
+        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.19);
+    }
+</style>
+<body>
+<nav th:replace="fragments/fragment :: navbar(dynamic='Ubah status gaji')"></nav>
+
+<div class="container mt-5" style="width:50%;padding-bottom:20px">
+    <div class="card">
+        <div class="card-header">
+            <h4><b>Ubah Status Gaji</b></h4>
+        </div>
+
+    <div class="card-body">
+        <div class="row justify-content-center" style="padding-top:15px">
+            <div class="col-md-10">
+
+            <div th:if="${status == 0}">
+                <p style="color:red">Tidak dapat mengubah status gaji sendiri</p>
+            </div>
+            <div th:if="${status == 1}">
+                <p style="color:forestgreen">Status gaji berhasil diubah</p>
+            </div>
+
+            <form th:action="@{/gaji/ubah-status/} + ${idGaji}" th:object="${newGaji}" method="POST">
+                <div class="form-group">
+                    <label>UUID</label>
+                    <input disabled type="text" class="form-control" th:value="${gaji.userGaji.id}"/>
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input disabled type="text" class="form-control" th:value="${gaji.userGaji.username}"/>
+                </div>
+                <div class="form-group">
+                    <label>Jumlah Gaji</label>
+                    <input disabled type="number" class="form-control" th:value="${gaji.gajiPokok}"/>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Masuk</label>
+                    <input disabled type="text" class="form-control" th:value="${gaji.tanggalMasuk}"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Status Persetujuan</label>
+                    <div>
+                        <select name="statusPersetujuan" th:field="${gaji.statusPersetujuan}">
+                            <option th:value="0">Menunggu Persetujuan</option>
+                            <option th:value="1">Ditolak</option>
+                            <option th:value="2">Disetujui</option>
+                        </select>
+                    </div>
+                </div>
+
+                <br>
+                <button type="submit" class="btn btn-primary mr-auto">Submit</button>
+                <a role="button" class="btn btn-outline-primary mr-auto" th:href="@{/}">Cancel</a>
+            </form>
+        </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</body>
+</html>
