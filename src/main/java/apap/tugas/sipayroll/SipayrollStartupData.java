@@ -21,7 +21,7 @@ public class SipayrollStartupData implements ApplicationRunner {
             UserModel user = new UserModel();
             user.setUsername("admin");
             user.setPassword("admin1234");
-            user.setRole(roleDb.findById(1));
+            user.setRole(roleDb.findById(1).get());
 
             userService.addUser(user);
         }
