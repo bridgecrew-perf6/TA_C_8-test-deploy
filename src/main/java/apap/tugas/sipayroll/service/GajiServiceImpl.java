@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -20,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@Transactional
 public class GajiServiceImpl implements GajiService {
     @Autowired
     GajiDb gajiDb;
