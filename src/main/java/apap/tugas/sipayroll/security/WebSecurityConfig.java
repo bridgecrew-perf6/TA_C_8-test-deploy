@@ -31,8 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/gaji/hapus/**").hasAnyAuthority("Kepala Departemen HR","Staff Payroll")
                 .antMatchers("/gaji/ubah/**").hasAnyAuthority("Kepala Departemen HR","Staff Payroll")
                 .antMatchers("/lowongan/tambah").hasAnyAuthority("Staff Payroll")
-                //.antMatchers("/user/tambah").hasAuthority("Kepala Departemen HR")
-                .antMatchers("/user/tambah").permitAll()
+                .antMatchers("/user/tambah").hasAuthority("Kepala Departemen HR")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -54,15 +53,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .passwordEncoder(encoder())
                 .withUser("odading").password(encoder().encode("mangoleh"))
-                .roles("USER");
+                .roles("Kepala Departemen HR");
     }
 
 
-    @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
-    }
+//    @Autowired
+//    private UserDetailsService userDetailsService;
+//
+//    @Autowired
+//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
+//        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+//    }
 }
