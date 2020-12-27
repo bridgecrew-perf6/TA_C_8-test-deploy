@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-//@Transactional
 public interface GajiDb extends JpaRepository<GajiModel, Integer> {
     GajiModel findByUserGaji(UserModel user);
     List<GajiModel> findAll();
