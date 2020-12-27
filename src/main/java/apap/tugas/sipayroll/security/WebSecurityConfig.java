@@ -31,8 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/gaji/hapus/**").hasAnyAuthority("Kepala Departemen HR","Staff Payroll")
                 .antMatchers("/gaji/ubah/**").hasAnyAuthority("Kepala Departemen HR","Staff Payroll")
                 .antMatchers("/lowongan/tambah").hasAnyAuthority("Staff Payroll")
-//                .antMatchers("/user/tambah").hasAuthority("Kepala Departemen HR")
-                .antMatchers("/user/tambah").permitAll()
+                .antMatchers("/user/tambah").hasAuthority("Kepala Departemen HR")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -49,20 +48,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder encoder() { return new BCryptPasswordEncoder(); }
 
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        auth.inMemoryAuthentication()
-                .passwordEncoder(encoder())
-                .withUser("odading").password(encoder().encode("mangoleh"))
-                .roles("Kepala Departemen HR");
-    }
-
-
 //    @Autowired
-//    private UserDetailsService userDetailsService;
-//
-//    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
-//        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(encoder())
+//                .withUser("odading").password(encoder().encode("mangoleh"))
+//                .roles("Kepala Departemen HR");
 //    }
+
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
+        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+    }
 }
