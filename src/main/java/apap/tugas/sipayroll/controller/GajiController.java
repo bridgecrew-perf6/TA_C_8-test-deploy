@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -95,6 +94,7 @@ public class GajiController {
     public String viewAllGaji(Model model) {
         UserModel user = userService.findUserByUserName(SecurityContextHolder.getContext().getAuthentication().getName());
         List<Integer> listTotalPendapatan = new ArrayList<>();
+        List<String> listUsername = new ArrayList<>();
 
         if (user.getRole().getNama().equals("Kepala Departemen HR") || user.getRole().getNama().equals("Staff Payroll")) {
             List<GajiModel> listGaji = gajiService.getGajiList();
@@ -108,18 +108,24 @@ public class GajiController {
                 for (GajiModel gaji : listGaji) {
                     Integer totalPendapatan = gajiService.getTotalPendapatan(gaji);
                     listTotalPendapatan.add(totalPendapatan);
+                    listUsername.add(gaji.getUserGaji().getUsername());
                 }
 
-                HashMap<String, String> listUserGaji = new HashMap<>();
-                for(GajiModel gajiUser : listGaji) {
-                    listUserGaji.put(gajiUser.getUserGaji().getId(), gajiUser.getUserGaji().getUsername());
-                }
+//                HashMap<String, String> listUserGaji = new HashMap<>();
+//                for(GajiModel gajiUser : listGaji) {
+//                    listUserGaji.put(gajiUser.getUserGaji().getId(), gajiUser.getUserGaji().getUsername());
+//                }
+
+//                for(GajiModel gajiUser : listGaji) {
+//                    listUsername.add(gajiUser.getUserGaji().getUsername());
+//                }
 
                 String msg = "ada gaji";
                 model.addAttribute("msg", msg);
                 model.addAttribute("listTotalPendapatan", listTotalPendapatan);
                 model.addAttribute("listGaji", listGaji);
-                model.addAttribute("listUserGaji", listUserGaji);
+//                model.addAttribute("listUserGaji", listUserGaji);
+                model.addAttribute("listUsername", listUsername);
             }
         }
         else {
@@ -135,15 +141,17 @@ public class GajiController {
             else{
                 Integer totalPendapatan = gajiService.getTotalPendapatan(gajiKaryawan);
                 listTotalPendapatan.add(totalPendapatan);
+                listUsername.add(user.getUsername());
 
-                HashMap<String, String> listUserGaji = new HashMap<>();
-                listUserGaji.put(user.getId(), user.getUsername());
+//                HashMap<String, String> listUserGaji = new HashMap<>();
+//                listUserGaji.put(user.getId(), user.getUsername());
 
                 String msg = "ada gaji";
                 model.addAttribute("msg", msg);
                 model.addAttribute("listTotalPendapatan", listTotalPendapatan);
                 model.addAttribute("listGaji", listGajiKaryawan);
-                model.addAttribute("listUserGaji", listUserGaji);
+//                model.addAttribute("listUserGaji", listUserGaji);
+                model.addAttribute("listUsername", listUsername);
             }
         }
 
