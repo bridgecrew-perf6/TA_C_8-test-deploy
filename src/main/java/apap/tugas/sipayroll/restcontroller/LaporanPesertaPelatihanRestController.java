@@ -50,7 +50,7 @@ public class LaporanPesertaPelatihanRestController {
 
     @Transactional
     @PostMapping(value = "/peserta/pelatihan")
-    private BaseResponse<BonusModel> createBonus(@Valid @RequestBody LaporanDetail laporan, BindingResult bindingResult)
+    BaseResponse<BonusModel> createBonus(@Valid @RequestBody LaporanDetail laporan, BindingResult bindingResult)
             throws ParseException {
         BaseResponse<BonusModel> response = new BaseResponse<BonusModel>();
         if(bindingResult.hasFieldErrors()){
@@ -74,7 +74,7 @@ public class LaporanPesertaPelatihanRestController {
                 userPelatihan.setPassword(password);
                 userService.addUser(userPelatihan);
 
-                UserModel kepalaDepartemen = userService.findUserByUserName("kepalabagian212");
+                UserModel kepalaDepartemen = userService.findUserByUserName("kepalabagian2121");
                 // Menambah gaji untuk user yang diterima dari SIPELATIHAN
 
                 gajiUserPelatihan.setUserGaji(userService.findUserByUserName(username));
