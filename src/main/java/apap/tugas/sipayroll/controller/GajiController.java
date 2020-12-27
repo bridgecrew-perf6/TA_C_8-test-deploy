@@ -76,7 +76,7 @@ public class GajiController {
         model.addAttribute("newGaji", new GajiModel());
         return "form-ubah-status-gaji";
     }
-
+    @Transactional
     @PostMapping("/gaji/ubah-status/{idGaji}")
     public String ubahStatusSubmit(@PathVariable Integer idGaji,
                                    @ModelAttribute GajiModel gajiUpdated, Model model)
