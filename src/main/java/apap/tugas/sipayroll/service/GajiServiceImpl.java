@@ -80,6 +80,7 @@ public class GajiServiceImpl implements GajiService {
     }
 
     @Override
+    @Transactional
     public Integer updateStatusGaji(GajiModel gaji) {
         if(SecurityContextHolder.getContext().getAuthentication().getName().equals(gaji.getUserGaji().getUsername())){
             return 0;
