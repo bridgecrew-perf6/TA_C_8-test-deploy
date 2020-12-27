@@ -110,16 +110,16 @@ public class GajiController {
                     listTotalPendapatan.add(totalPendapatan);
                 }
 
-                HashMap<String, String> listUserGaji = new HashMap<String, String>();
-                for(GajiModel gajiUser : listGaji) {
-                    listUserGaji.put(gajiUser.getUserGaji().getId(), gajiUser.getUserGaji().getUsername());
-                }
+//                HashMap<String, String> listUserGaji = new HashMap<String, String>();
+//                for(GajiModel gajiUser : listGaji) {
+//                    listUserGaji.put(gajiUser.getUserGaji().getId(), gajiUser.getUserGaji().getUsername());
+//                }
 
                 String msg = "ada gaji";
                 model.addAttribute("msg", msg);
                 model.addAttribute("listTotalPendapatan", listTotalPendapatan);
                 model.addAttribute("listGaji", listGaji);
-                model.addAttribute("listUserGaji", listUserGaji);
+//                model.addAttribute("listUserGaji", listUserGaji);
             }
         }
         else {
@@ -136,14 +136,14 @@ public class GajiController {
                 Integer totalPendapatan = gajiService.getTotalPendapatan(gajiKaryawan);
                 listTotalPendapatan.add(totalPendapatan);
 
-                HashMap<String, String> listUserGaji = new HashMap<String, String>();
-                listUserGaji.put(user.getId(), user.getUsername());
+//                HashMap<String, String> listUserGaji = new HashMap<String, String>();
+//                listUserGaji.put(user.getId(), user.getUsername());
 
                 String msg = "ada gaji";
                 model.addAttribute("msg", msg);
                 model.addAttribute("listTotalPendapatan", listTotalPendapatan);
                 model.addAttribute("listGaji", listGajiKaryawan);
-                model.addAttribute("listUserGaji", listUserGaji);
+//                model.addAttribute("listUserGaji", listUserGaji);
             }
         }
 

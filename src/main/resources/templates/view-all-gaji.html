@@ -52,7 +52,7 @@
                             <tbody>
                                 <tr th:each="gaji, iterationStatus : ${listGaji}">
                                     <td th:text="${iterationStatus.count}"></td>
-                                    <td th:text="${listUserGaji.get(gaji.userGaji.id)}"></td>
+                                    <td th:text="${gaji.userGaji.username}"></td>
                                     <td th:text="${gaji.gajiPokok}"></td>
                                     <td th:text="${listTotalPendapatan[iterationStatus.index]}"></td>
                                     <td>
