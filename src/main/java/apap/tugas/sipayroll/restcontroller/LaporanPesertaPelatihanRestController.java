@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -47,6 +48,7 @@ public class LaporanPesertaPelatihanRestController {
 //        return laporanPesertaPelatihanRestService.getLaporanPesertaPelatihan();
 //    }
 
+    @Transactional
     @PostMapping(value = "/peserta/pelatihan")
     private BaseResponse<BonusModel> createBonus(@Valid @RequestBody LaporanDetail laporan, BindingResult bindingResult)
             throws ParseException {
