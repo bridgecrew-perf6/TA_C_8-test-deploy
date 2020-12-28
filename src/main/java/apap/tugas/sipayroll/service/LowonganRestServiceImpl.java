@@ -24,7 +24,7 @@ public class LowonganRestServiceImpl implements LowonganRestService {
     @Override
     public Mono<LowonganResponseDetail> createLowongan(LowonganDetail lowongan) {
             return webClient.post()
-                    .uri("/rest/lowongan/add")
+                    .uri("/api/v1/lowongan")
                     .body(Mono.just(lowongan), LowonganDetail.class)
                     .retrieve()
                     .bodyToMono(LowonganResponseDetail.class);
