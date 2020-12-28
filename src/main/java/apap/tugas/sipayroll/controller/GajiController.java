@@ -112,7 +112,7 @@ public class GajiController {
         if (user.getRole().getNama().equals("Kepala Departemen HR") || user.getRole().getNama().equals("Staff Payroll")) {
             List<GajiModel> listGaji = gajiService.getGajiList();
 
-            if (listGaji==null){
+            if (listGaji.isEmpty()){
                 String msg = "tidak ada gaji";
                 model.addAttribute("msg", msg);
                 model.addAttribute("message", "Belum terdapat daftar gaji.");
