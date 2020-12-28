@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 @Repository
 public interface GajiDb extends JpaRepository<GajiModel, Integer> {
     GajiModel findByUserGaji(UserModel user);
