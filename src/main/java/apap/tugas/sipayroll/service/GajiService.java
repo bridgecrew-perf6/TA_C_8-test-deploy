@@ -12,6 +12,8 @@ public interface GajiService {
     // Method untuk menambah Gaji
     void addGaji(GajiModel gaji);
 
+    boolean pernahTraining(GajiModel gaji);
+
     GajiModel getGajiById(Integer idGaji);
 
     Integer updateStatusGaji(GajiModel gaji);

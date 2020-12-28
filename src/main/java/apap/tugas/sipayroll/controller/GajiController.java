@@ -159,6 +159,7 @@ public class GajiController {
         GajiModel gaji = gajiService.getGajiById(idGaji);
         model.addAttribute("gaji",gaji);
         model.addAttribute("penyetuju", "Belum ada penyetuju");
+        model.addAttribute("training", gajiService.pernahTraining(gaji));
         model.addAttribute("totalBonus", gajiService.getTotalBonus(gaji));
         model.addAttribute("totalLembur", gajiService.getTotalLembur(gaji));
 

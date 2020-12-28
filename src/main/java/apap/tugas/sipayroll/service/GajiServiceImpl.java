@@ -68,10 +68,19 @@ public class GajiServiceImpl implements GajiService {
             bonus += b.getJumlahBonus();
         }
         //nanti parameter getPelatihan pakai id user
-        bonus += 150000*pelatihanRestService.getPelatihan(gaji.getUserGaji().getUsername()).length;
+        Integer bonusPelatihan = 150000*pelatihanRestService.getPelatihan(gaji.getUserGaji().getUsername()).getResult().size();
+        bonus += bonusPelatihan;
         //System.out.println(" total bonus adalah "+ bonus);
         return bonus;
 
+    }
+    @Override
+    public boolean pernahTraining(GajiModel gaji){
+        Integer bonusPelatihan = Integer bonusPelatihan = 150000*pelatihanRestService.getPelatihan(gaji.getUserGaji().getUsername()).getResult().size();
+        if(bonusPelatihan == 0){
+            return false;
+        }
+        return true;
     }
 
     @Override

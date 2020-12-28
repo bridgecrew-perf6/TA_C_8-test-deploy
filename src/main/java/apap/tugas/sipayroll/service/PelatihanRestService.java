@@ -7,5 +7,5 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 public interface PelatihanRestService {
-    PelatihanUser[] getPelatihan(String username);
+    PelatihanResponse getPelatihan(String username);
 }
