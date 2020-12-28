@@ -5,5 +5,5 @@ public class Setting {
     final public static String pelatihanUrl="https://si-pelatihan.herokuapp.com/";
     final public static String sipegawaiUrl = "http://si-pegawai.herokuapp.com";
     final public static String getSipegawaiUrl = "http://si-pegawai.herokuapp.com/api/v1/pegawai/";
-    final public static String lowonganUrl = "https://a242badc-f5e7-4fd0-a6f0-58fdd7f2e219.mock.pstmn.io";
+    final public static String lowonganUrl = "http://sirekrutmen-c9.herokuapp.com";
 }
