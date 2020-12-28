@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class BonusController {
     @Autowired
     GajiService gajiService;
 
+    @Transactional
     @GetMapping("/bonus/add")
     public String addBonusFormPage(Model model){
 
@@ -44,6 +46,7 @@ public class BonusController {
         return "form-add-bonus";
     }
 
+    @Transactional
     @PostMapping("/bonus/add")
     public String addBonusSubmit(
             @ModelAttribute BonusModel bonus,
