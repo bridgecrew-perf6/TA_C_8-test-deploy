@@ -84,6 +84,7 @@ public class GajiServiceImpl implements GajiService {
     }
 
     @Override
+    @Transactional
     public GajiModel getGajiById(Integer idGaji) {
         return gajiDb.findById(idGaji).get();
     }
