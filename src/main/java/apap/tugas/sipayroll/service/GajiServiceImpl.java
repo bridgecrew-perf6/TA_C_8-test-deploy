@@ -67,8 +67,12 @@ public class GajiServiceImpl implements GajiService {
         for(BonusModel b : gaji.getListBonus()){
             bonus += b.getJumlahBonus();
         }
-        //nanti parameter getPelatihan pakai id user
-        Integer bonusPelatihan = 150000*pelatihanRestService.getPelatihan(gaji.getUserGaji().getUsername()).getResult().size();
+        Integer bonusPelatihan = 0;
+        try {
+            bonusPelatihan = 150000 * pelatihanRestService.getPelatihan(gaji.getUserGaji().getUsername()).getResult().size();
+        }catch (Exception e){
+            bonusPelatihan = 0;
+        }
         bonus += bonusPelatihan;
         //System.out.println(" total bonus adalah "+ bonus);
         return bonus;
@@ -76,8 +80,10 @@ public class GajiServiceImpl implements GajiService {
     }
     @Override
     public boolean pernahTraining(GajiModel gaji){
-        Integer bonusPelatihan = 150000*pelatihanRestService.getPelatihan(gaji.getUserGaji().getUsername()).getResult().size();
-        if(bonusPelatihan == 0){
+        Integer bonusPelatihan = 0;
+        try {
+            bonusPelatihan = 150000 * pelatihanRestService.getPelatihan(gaji.getUserGaji().getUsername()).getResult().size();
+        }catch (Exception e){
             return false;
         }
         return true;
