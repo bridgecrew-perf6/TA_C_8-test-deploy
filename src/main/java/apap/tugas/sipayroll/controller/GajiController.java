@@ -67,6 +67,7 @@ public class GajiController {
 
     }
 
+    @Transactional
     @GetMapping("/gaji/ubah-status/{idGaji}")
     public String ubahStatus(@PathVariable Integer idGaji, Model model){
         model.addAttribute("idGaji", idGaji);
