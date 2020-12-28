@@ -153,6 +153,7 @@ public class GajiController {
         return "view-all-gaji";
     }
 
+    @Transactional
     @GetMapping("/gaji/{idGaji}")
     public String detailGaji(
             @PathVariable Integer idGaji, Model model
