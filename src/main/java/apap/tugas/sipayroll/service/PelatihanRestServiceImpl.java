@@ -18,20 +18,9 @@ public class PelatihanRestServiceImpl implements PelatihanRestService{
     public PelatihanRestServiceImpl(WebClient.Builder webClientBuilder){
         this.webClient = webClientBuilder.baseUrl(Setting.pelatihanUrl).build();
     }
-//    @Override
-//    public PelatihanResponse getPelatihan(String username) {
-//        return this.webClient.get().uri("/api/pelatihan/getListPelatihan/" + username).retrieve().bodyToMono(PelatihanResponse.class).block();
-//    }
     @Override
-    public PelatihanUser[] getPelatihan(String username) {
-        ObjectMapper mapper = new ObjectMapper();
-        String json = this.webClient.get().uri("/api/pelatihan/getListPelatihan/" + username).retrieve().bodyToMono(String.class).block();
-        PelatihanUser[] listPelatihan = new PelatihanUser[0];
-        try {
-            listPelatihan = mapper.readValue(json, PelatihanUser[].class);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return listPelatihan;
+    public PelatihanResponse getPelatihan(String username) {
+        return this.webClient.get().uri("/api/pelatihan/getListPelatihan/" + username).retrieve().bodyToMono(PelatihanResponse.class).block();
     }
+
 }

@@ -76,7 +76,7 @@ public class GajiController {
         model.addAttribute("newGaji", new GajiModel());
         return "form-ubah-status-gaji";
     }
-
+    @Transactional
     @PostMapping("/gaji/ubah-status/{idGaji}")
     public String ubahStatusSubmit(@PathVariable Integer idGaji,
                                    @ModelAttribute GajiModel gajiUpdated, Model model)
@@ -159,6 +159,7 @@ public class GajiController {
         GajiModel gaji = gajiService.getGajiById(idGaji);
         model.addAttribute("gaji",gaji);
         model.addAttribute("penyetuju", "Belum ada penyetuju");
+        model.addAttribute("training", gajiService.pernahTraining(gaji));
         model.addAttribute("totalBonus", gajiService.getTotalBonus(gaji));
         model.addAttribute("totalLembur", gajiService.getTotalLembur(gaji));
 

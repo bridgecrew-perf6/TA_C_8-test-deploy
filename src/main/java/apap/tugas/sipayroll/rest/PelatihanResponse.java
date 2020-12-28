@@ -6,13 +6,31 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PelatihanResponse {
-    private List<PelatihanUser> pelatihan;
+    private String status;
+    private String message;
+    private List<PelatihanUser> result;
 
-    public List<PelatihanUser> getPelatihan() {
-        return pelatihan;
+    public String getStatus() {
+        return status;
     }
 
-    public void setPelatihan(List<PelatihanUser> pelatihan) {
-        this.pelatihan = pelatihan;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public List<PelatihanUser> getResult() {
+        return result;
+    }
+
+    public void setResult(List<PelatihanUser> result) {
+        this.result = result;
     }
 }

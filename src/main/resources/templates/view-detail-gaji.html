@@ -94,6 +94,14 @@
                         <h6 th:text="' : ' + ${penyetuju}"></h6>
                     </div>
                 </div>
+            <div th:unless="${training}" class="row justify-content-center" style="margin-bottom:25px">
+                <div class="col-3">
+                    <h6 th:text="'Message'"></h6>
+                </div>
+                <div class="col-lg-7">
+                    <h6>Gaji anda akan dipotong 10% karena belum mengikuti training apapun</h6>
+                </div>
+            </div>
             <a class="btn btn-primary mx-5 mb-3" th:href="@{/gaji}">Kembali</a>
             </div>
 
