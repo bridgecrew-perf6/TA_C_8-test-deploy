@@ -75,6 +75,12 @@ public class GajiController {
         model.addAttribute("gaji",gaji);
         model.addAttribute("status",2);
         model.addAttribute("newGaji", new GajiModel());
+        HashMap<String, String> user = new HashMap<String, String>();
+        user.put(gaji.getUserGaji().getId(), gaji.getUserGaji().getUsername());
+
+        model.addAttribute("user", user);
+
+
         return "form-ubah-status-gaji";
     }
     @Transactional
@@ -89,6 +95,10 @@ public class GajiController {
         model.addAttribute("newGaji", new GajiModel());
         model.addAttribute("gaji",gaji);
         model.addAttribute("status", statusGaji);
+        HashMap<String, String> user = new HashMap<String, String>();
+        user.put(gaji.getUserGaji().getId(), gaji.getUserGaji().getUsername());
+
+        model.addAttribute("user", user);
 
         return "form-ubah-status-gaji";
     }
