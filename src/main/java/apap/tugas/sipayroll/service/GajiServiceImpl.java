@@ -84,13 +84,11 @@ public class GajiServiceImpl implements GajiService {
     }
 
     @Override
-    @Transactional
     public GajiModel getGajiById(Integer idGaji) {
         return gajiDb.findById(idGaji).get();
     }
 
     @Override
-    @Transactional
     public Integer updateStatusGaji(GajiModel gaji) {
         if(SecurityContextHolder.getContext().getAuthentication().getName().equals(gaji.getUserGaji().getUsername())){
             return 0;
