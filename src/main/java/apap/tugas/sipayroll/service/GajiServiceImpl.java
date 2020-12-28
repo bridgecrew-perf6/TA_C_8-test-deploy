@@ -131,7 +131,7 @@ public class GajiServiceImpl implements GajiService {
         Integer bonus = 0;
         List<BonusModel> listBonus = gaji.getListBonus();
 
-        if (!(listBonus==null)) {
+        if (!(listBonus.isEmpty())) {
             for (BonusModel bonusModel : listBonus) {
                 Date tanggalDiberikan = bonusModel.getTanggalDiberikan();
                 calendar.setTime(tanggalDiberikan);
@@ -148,7 +148,7 @@ public class GajiServiceImpl implements GajiService {
         Integer lembur = 0;
         List<LemburModel> listLembur = gaji.getListLembur();
 
-        if (!(listLembur==null)) {
+        if (!(listLembur.isEmpty())) {
             for (LemburModel lemburModel : listLembur) {
                 Date waktuMulai = lemburModel.getWaktuMulai();
                 Date waktuSelesai = lemburModel.getWaktuSelesai();
