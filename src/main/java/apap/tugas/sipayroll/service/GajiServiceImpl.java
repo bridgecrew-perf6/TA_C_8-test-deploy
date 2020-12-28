@@ -76,7 +76,7 @@ public class GajiServiceImpl implements GajiService {
     }
     @Override
     public boolean pernahTraining(GajiModel gaji){
-        Integer bonusPelatihan = Integer bonusPelatihan = 150000*pelatihanRestService.getPelatihan(gaji.getUserGaji().getUsername()).getResult().size();
+        Integer bonusPelatihan = 150000*pelatihanRestService.getPelatihan(gaji.getUserGaji().getUsername()).getResult().size();
         if(bonusPelatihan == 0){
             return false;
         }
