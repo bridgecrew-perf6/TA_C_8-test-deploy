@@ -20,7 +20,7 @@ public class PelatihanRestServiceImpl implements PelatihanRestService{
     }
     @Override
     public PelatihanResponse getPelatihan(String username) {
-        return this.webClient.get().uri("/api/pelatihan/getListPelatihan/" + username).retrieve().bodyToMono(PelatihanResponse.class).block();
+        return this.webClient.get().uri("api/pelatihan/getListPelatihan/" + username).retrieve().bodyToMono(PelatihanResponse.class).block();
     }
 
 }
