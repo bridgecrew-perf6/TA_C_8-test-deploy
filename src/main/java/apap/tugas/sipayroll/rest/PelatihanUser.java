@@ -2,6 +2,7 @@ package apap.tugas.sipayroll.rest;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -9,8 +10,17 @@ import java.util.Date;
 public class PelatihanUser {
     private Integer idPelatihan;
     private String namaPelatihan;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tanggalMulai;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tanggalSelesai;
+
+    @DateTimeFormat(pattern="HH:mm")
+    private Date waktuMulai;
+
+    @DateTimeFormat(pattern="HH:mm")
+    private Date waktuSelesai;
 
     public Integer getIdPelatihan() {
         return idPelatihan;
@@ -42,5 +52,21 @@ public class PelatihanUser {
 
     public void setTanggalSelesai(Date tanggalSelesai) {
         this.tanggalSelesai = tanggalSelesai;
+    }
+
+    public Date getWaktuMulai() {
+        return waktuMulai;
+    }
+
+    public void setWaktuMulai(Date waktuMulai) {
+        this.waktuMulai = waktuMulai;
+    }
+
+    public Date getWaktuSelesai() {
+        return waktuSelesai;
+    }
+
+    public void setWaktuSelesai(Date waktuSelesai) {
+        this.waktuSelesai = waktuSelesai;
     }
 }

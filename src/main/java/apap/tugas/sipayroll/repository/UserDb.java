@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
+@Transactional
 public interface UserDb extends JpaRepository<UserModel, String> {
     UserModel findByUsername(String username);
     List<UserModel> findAll();
