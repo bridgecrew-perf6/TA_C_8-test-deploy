@@ -1,6 +1,7 @@
 package apap.tugas.sipayroll.rest;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -16,10 +17,10 @@ public class PelatihanUser {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tanggalSelesai;
 
-    @DateTimeFormat(pattern="HH:mm")
+    @JsonFormat(pattern="HH:mm")
     private Date waktuMulai;
 
-    @DateTimeFormat(pattern="HH:mm")
+    @JsonFormat(pattern="HH:mm")
     private Date waktuSelesai;
 
     public Integer getIdPelatihan() {
