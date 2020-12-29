@@ -83,7 +83,7 @@ public class GajiServiceImpl implements GajiService {
         Integer bonusPelatihan = 0;
         try {
             bonusPelatihan = 150000 * pelatihanRestService.getPelatihan(gaji.getUserGaji().getUsername()).getResult().size();
-        }catch (Exception e){
+        }catch (NullPointerException e){
             return false;
         }
         return true;
